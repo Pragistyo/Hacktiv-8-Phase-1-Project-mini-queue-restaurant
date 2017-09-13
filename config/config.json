@@ -2,7 +2,7 @@
   "development": {
     "username": "ogi",
     "password": "bebas",
-    "database": "database_development",
+    "database": "restaurant",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

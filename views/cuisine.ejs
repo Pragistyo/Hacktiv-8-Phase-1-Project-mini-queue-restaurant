@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Cuisine Name</th>
+        <th>Amount</th>
+        <th>Price</th>
+      </tr>
+      data.forEach(z=>{
+      <tr>
+        <td>z.food</td>
+        <td>z.amount</td>
+        <td>z.price</td>
+        <td>
+          <a href="/admin/cuisine/edit/<%=z.id%>">EDIT</a> ||
+          <a href="/admin/cuisine/delete/<%=z.id%>">DELETE</a>
+        </td>
+      </tr>
+      })
+    </table>
+  </body>
+  <a href="/">HOME</a>
+</html>
