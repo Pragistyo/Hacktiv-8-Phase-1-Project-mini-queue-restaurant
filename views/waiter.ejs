@@ -12,8 +12,8 @@
       </tr>
       data.forEach(z=>{
       <tr>
-        <td>z.name</td>
-        <td>z.jabatam</td>
+        <td>z.nama</td>
+        <td>z.jabatan</td>
         <td>
           <a href="/admin/waiter/edit/<%=z.id%>">EDIT</a> ||
           <a href="/admin/waiter/delete/<%=z.id%>">DELETE</a>
@@ -24,7 +24,7 @@
 
     <h2>Add Waiter</h2>
     <form action="/admin/waiter" method="post">
-      <input type="text" name="name" value=""placeholder="input new Waiter name">
+      <input type="text" name="nama" value=""placeholder="input new Waiter name">
       <input type="text" name="jabatan" value=""placeholder="input new Waiter Occupation">
     </form>
   </body>
