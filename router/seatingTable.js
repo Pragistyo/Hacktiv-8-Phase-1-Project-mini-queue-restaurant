@@ -6,7 +6,7 @@ router.get('/',(req, res)=>{
     models.SeatingTable.findAll({
         order:[['id','ASC']]
     }).then(bla=>{
-      res.render('waiter',{data:bla,err_msg:false})
+      res.render('seatingTable',{data:bla,err_msg:false})
     })
     .catch(err=>{
       throw err.toString()
@@ -16,17 +16,22 @@ router.get('/',(req, res)=>{
 
 //   ADD Officer
   router.post('/', (req, res)=>{
-//   res.send(req.body)
+
     models.SeatingTable.create({
-                        nama:`${req.body.nama}`,
-                        jabatan:`${req.body.jabatan}`
+                        tableName:`${req.body.tableName}`,
+                        capasity: req.body.capasity
                       })
     .then(()=>{
-        res.redirect('/admin/waiter')
+        res.redirect('/admin/seatingTable')
     })
     .catch(err=>{
-        throw err.toString()
+        models.SeatingTable.findAll({
+            order:[['id','ASC']]
+        }).then(bla=>{
+          res.render('seatingTable',{data:bla,err_msg:err.errors[0].message})
+        })
     })
+    
 })
 
 // DELETE officer
@@ -37,7 +42,7 @@ router.get('/delete/:id', (req, res)=>{
         }
     })
     .then(()=>{
-        res.redirect('/admin/waiter')
+        res.redirect('/admin/seatingTable')
     })
     .catch(err=>{
         res.send(err)
@@ -52,7 +57,7 @@ router.get('/edit/:id', (req, res)=> {
         }
     })
     .then(rows =>{
-        res.render('waiter-edit', {data:rows[0]})
+        res.render('seatingTable-edit', {data:rows[0]})
     }) 
     .catch(err =>{
         res.send(err)
@@ -61,15 +66,15 @@ router.get('/edit/:id', (req, res)=> {
 
 router.post('/edit/:id', (req, res)=>{
     models.SeatingTable.update({
-        nama:`${req.body.nama}`, 
-        jabatan:`${req.body.jabatan}`
+        tableName:`${req.body.tableName}`, 
+        capasity:`${req.body.capasity}`
     },{
         where:{
             id : req.params.id
         }
     })
     .then((r)=>{
-        res.redirect('/admin/waiter')
+        res.redirect('/admin/seatingTable')
     })
     .catch(err=>{
         res.send(err)

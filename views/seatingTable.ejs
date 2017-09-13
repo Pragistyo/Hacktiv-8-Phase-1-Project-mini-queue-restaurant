@@ -5,10 +5,12 @@
     <title></title>
   </head>
   <body>
-    <table>
+    <a href="/admin">Back To Admin</a>
+    <table border ="1">
       <tr>
         <th>Table Name</th>
         <th>Capacity</th>
+        <th>Option</th>
       </tr>
       <%data.forEach(z=>{%>
       <tr>
@@ -24,7 +26,11 @@
     <h2>Add new Seating-Table name</h2>
     <form action="/admin/seatingTable" method="post">
       <input type="text" name="tableName" value="" placeholder="input new Seating-Table name">
-      <input type="text" name="capacity" value="" placeholder="input new Seating-Table Capacity">
+      <input type="integer" name="capasity" value="" placeholder="input new Seating-Table Capacity">
+      <button type="submit">Input</button>
     </form>
+    <%if(err_msg){%>
+      <p><%=err_msg%></p>
+    <%}%>
   </body>
 </html>

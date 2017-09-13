@@ -13,5 +13,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  SeatingTableWaiter.association = models=>{
+    SeatingTableWaiter.belongsTo(models.Waiter)
+    SeatingTableWaiter.belongsTo(models.Waiter)
+  }
   return SeatingTableWaiter;
 };

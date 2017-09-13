@@ -22,7 +22,7 @@ router.get('/',(req, res)=>{
                         jabatan:`${req.body.jabatan}`
                       })
     .then(()=>{
-        res.redirect('/admin/waiter')
+        res.redirect('/admin/seatingTable')
     })
     .catch(err=>{
         throw err.toString()
@@ -37,7 +37,7 @@ router.get('/delete/:id', (req, res)=>{
         }
     })
     .then(()=>{
-        res.redirect('/admin/waiter')
+        res.redirect('/admin/seatingTable')
     })
     .catch(err=>{
         res.send(err)
@@ -52,7 +52,7 @@ router.get('/edit/:id', (req, res)=> {
         }
     })
     .then(rows =>{
-        res.render('waiter-edit', {data:rows[0]})
+        res.render('seatingTable-edit', {data:rows[0]})
     }) 
     .catch(err =>{
         res.send(err)
@@ -69,7 +69,7 @@ router.post('/edit/:id', (req, res)=>{
         }
     })
     .then((r)=>{
-        res.redirect('/admin/waiter')
+        res.redirect('/admin/seatingTable')
     })
     .catch(err=>{
         res.send(err)
