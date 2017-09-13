@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Customer</title>
+  </head>
+  <body>
+    <div>
+        <% data.forEach(meja =>{%>
+            <div><%=meja.tableName %></div>
+            <div>
+                <a href="/customer/orders/<%=meja.id%>"><button>Orders</button></a>
+                <a href="/customer/vieworder"><button>View Orders</button></a>
+            </div>
+        <%})%>
+    </div>    
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Customer</title>
+  </head>
+  <h2>Please Select Your Order</h2>
+  <h2>You are at table <%=dataMeja.tableName%></h2>
+
+  <body>
+      <label>Food List: </label><br><br>
+    <div>
+        <form action="/customer/orders" method="POST">
+            <%data.forEach(makan =>{%>
+            <input type="checkbox" name="food" value="<%=makan.id%>"><%=makan.food%><br><br>
+            <%})%>
+            <label>Your Waiter:</label>
+            <select name="WaiterId">
+                <%dataWaiter.forEach(z=>{%>
+                    <option value="<%=z.id%>"><%=z.nama%></option>
+                <%})%>
+            </select><br><br>
+            <input type="date" name="Tanggal"><br>
+            <input type="hidden" name="SeatingTableId" value="<%=dataMeja.id%>">
+            <input type="hidden" name="Status" value="0">
+            <input type="submit" value="Submit">
+        </form> 
+    </div>    
+  </body>
+</html>

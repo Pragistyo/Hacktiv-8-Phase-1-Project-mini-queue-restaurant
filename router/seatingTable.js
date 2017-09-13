@@ -14,7 +14,7 @@ router.get('/',(req, res)=>{
   })
 
 
-//   ADD Officer
+//   ADD Table
   router.post('/', (req, res)=>{
 
     models.SeatingTable.create({
@@ -34,7 +34,7 @@ router.get('/',(req, res)=>{
     
 })
 
-// DELETE officer
+// DELETE Table
 router.get('/delete/:id', (req, res)=>{
     models.SeatingTable.destroy({
         where:{
@@ -49,7 +49,7 @@ router.get('/delete/:id', (req, res)=>{
     })
 })
 
-// EDIT officer
+// EDIT Table
 router.get('/edit/:id', (req, res)=> {
     models.SeatingTable.findAll({
         where : {
