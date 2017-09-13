@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Table Name</th>
+        <th>Capacity</th>
+      </tr>
+      <%data.forEach(z=>{%>
+      <tr>
+        <td><%=z.tableName%></td>
+        <td><%=z.capasity%></td>
+        <td>
+          <a href="/admin/seatingTable/edit/<%=z.id%>">EDIT</a> ||
+          <a href="/admin/seatingTable/delete/<%=z.id%>">DELETE</a>
+        </td>
+      </tr>
+      <%})%>
+    </table>
+    <h2>Add new Seating-Table name</h2>
+    <form action="/admin/seatingTable" method="post">
+      <input type="text" name="tableName" value="" placeholder="input new Seating-Table name">
+      <input type="text" name="capacity" value="" placeholder="input new Seating-Table Capacity">
+    </form>
+  </body>
+</html>

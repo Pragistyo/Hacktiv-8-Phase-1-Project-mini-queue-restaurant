@@ -3,7 +3,7 @@ const router  = express.Router();
 const models = require('../models');
 
 router.get('/',(req, res)=>{
-    models.Waiter.findAll({
+    models.SeatingTable.findAll({
         order:[['id','ASC']]
     }).then(bla=>{
       res.render('waiter',{data:bla,err_msg:false})
@@ -17,7 +17,7 @@ router.get('/',(req, res)=>{
 //   ADD Officer
   router.post('/', (req, res)=>{
 //   res.send(req.body)
-    models.Waiter.create({
+    models.SeatingTable.create({
                         nama:`${req.body.nama}`,
                         jabatan:`${req.body.jabatan}`
                       })
@@ -31,7 +31,7 @@ router.get('/',(req, res)=>{
 
 // DELETE officer
 router.get('/delete/:id', (req, res)=>{
-    models.Waiter.destroy({
+    models.SeatingTable.destroy({
         where:{
             id: req.params.id
         }
@@ -46,7 +46,7 @@ router.get('/delete/:id', (req, res)=>{
 
 // EDIT officer
 router.get('/edit/:id', (req, res)=> {
-    models.Waiter.findAll({
+    models.SeatingTable.findAll({
         where : {
             id : req.params.id
         }
@@ -60,7 +60,7 @@ router.get('/edit/:id', (req, res)=> {
 })
 
 router.post('/edit/:id', (req, res)=>{
-    models.Waiter.update({
+    models.SeatingTable.update({
         nama:`${req.body.nama}`, 
         jabatan:`${req.body.jabatan}`
     },{
