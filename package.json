@@ -1,0 +1,27 @@
+{
+  "name": "hacktiv-8-phase-1-project-mini-queue-restourant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pragistyo/Hacktiv-8-Phase-1-Project-mini-queue-restourant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pragistyo/Hacktiv-8-Phase-1-Project-mini-queue-restourant/issues"
+  },
+  "homepage": "https://github.com/Pragistyo/Hacktiv-8-Phase-1-Project-mini-queue-restourant#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "pg": "^7.3.0",
+    "sequelize": "^4.8.3",
+    "sequelize-cli": "^3.0.0-2"
+  }
+}
