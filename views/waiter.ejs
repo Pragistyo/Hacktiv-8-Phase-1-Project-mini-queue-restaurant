@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Occupation</th>
+      </tr>
+      data.forEach(z=>{
+      <tr>
+        <td>z.nama</td>
+        <td>z.jabatan</td>
+        <td>
+          <a href="/admin/waiter/edit/<%=z.id%>">EDIT</a> ||
+          <a href="/admin/waiter/delete/<%=z.id%>">DELETE</a>
+        </td>
+      </tr>
+      })
+    </table>
+
+    <h2>Add Waiter</h2>
+    <form action="/admin/waiter" method="post">
+      <input type="text" name="nama" value=""placeholder="input new Waiter name">
+      <input type="text" name="jabatan" value=""placeholder="input new Waiter Occupation">
+    </form>
+  </body>
+</html>

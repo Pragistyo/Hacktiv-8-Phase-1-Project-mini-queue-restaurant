@@ -1,7 +1,12 @@
 {
   "development": {
+<<<<<<< HEAD
+    "username": "ogi",
+    "password": "bebas",
+=======
     "username": "postgres",
     "password": "postgres",
+>>>>>>> 87adbbb27bc136248c2cb8ab1d236ec92fe348ab
     "database": "restaurant",
     "host": "127.0.0.1",
     "dialect": "postgres"
