@@ -3,6 +3,7 @@ const app = express();
 const bodyparser = require('body-parser');
 const pg = require('pg');
 const Sequelize = require('sequelize')
+const env = process.env.NODE_ENV || "development";
 
 const index = require('./router/index')
 const indexadmin = require('./router/indexAdmin')
@@ -19,6 +20,6 @@ app.use('/',index)
 app.use('/admin', indexadmin)
 app.use('/customer', indexcust)
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT || 3000,()=>{
     console.log(`Hello I'm on 3000`);
   })
