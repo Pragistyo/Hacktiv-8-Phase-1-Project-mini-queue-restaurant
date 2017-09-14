@@ -18,4 +18,7 @@ router.post('/waiter',(req,res)=>{
                         nama:req.body.name
                         jabatan:
                       })
+  .then(()=>{
+    res.redirect('/admin/waiter')
+  })
 })

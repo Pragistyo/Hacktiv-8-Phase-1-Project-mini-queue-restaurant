@@ -29,7 +29,7 @@ module.exports = {
         amount: 50,
         price: 2000,
         createdAt: new Date(),
-        updatedAt: new Date()  
+        updatedAt: new Date()
     }], {});
   },
 

@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       capasity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
