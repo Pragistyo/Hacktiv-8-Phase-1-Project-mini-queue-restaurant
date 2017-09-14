@@ -6,7 +6,7 @@ router.get('/',(req, res)=>{
     models.SeatingTable.findAll({
         order:[['id','ASC']]
     }).then(bla=>{
-      res.render('seatingTable',{data:bla,err_msg:false})
+      res.render('seatingTable',{data:bla,err_msg:false, title: 'Restaurant Magic'})
     })
     .catch(err=>{
       throw err.toString()
