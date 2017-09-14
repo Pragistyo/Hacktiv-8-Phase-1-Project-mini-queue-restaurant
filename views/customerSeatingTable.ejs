@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include partial/head%>
+<h1>You are on table: <%=data[0].SeatingTable.tableName%></h1>
+<body>
+    <fieldset>
+        <table border = "1">
+            <thead>
+                <th>Orders</th>
+                <th>Waiter</th>
+                <th>Queue No</th>
+                <th>Status</th>
+                <th>All Queue</th>
+            </thead>
+            <% dataQueue.forEach(d=>{%>
+            <tbody>
+                <tr>
+                <%if(d.SeatingTableId == data[0].SeatingTable.id){%>
+                    <%if(d.status == 0){%>
+                        <%d.status = 'On Progress'%>
+                        <td><%=d.dataValues.FoodList.dataValues.food%></td>
+                        <td><%=d.dataValues.Waiter.nama%></td>
+                        <td><%=d.noAntrian%></td>
+                        <td><%=d.status%></td>
+                        <td><button onclick="alert('Your Queue is <%=d.dataValues.YourQueue%> from <%=dataQueue[dataQueue.length-1].dataValues.TotalQueue%>')">Look Queue</button></td>
+                    <%}%>
+                <%}%>
+                </tr>
+            </tbody>
+            <%})%>
+        </table>
+    </fieldset>
+    <a href="/customer"><button>Back to Customer Option</button></a>
+</body>
+</html>

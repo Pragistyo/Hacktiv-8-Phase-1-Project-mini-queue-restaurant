@@ -10,5 +10,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  Waiter.associate = models=>{
+    Waiter.belongsToMany(models.SeatingTable,{through:'SeatingTableWaiter'})
+    Waiter.hasMany(models.SeatingTableWaiter)
+  }
   return Waiter;
 };

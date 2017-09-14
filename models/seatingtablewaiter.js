@@ -1,6 +1,12 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var SeatingTableWaiter = sequelize.define('SeatingTableWaiter', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     SeatingTableId: DataTypes.INTEGER,
     WaiterId: DataTypes.INTEGER,
     tanggal: DataTypes.STRING,
@@ -13,5 +19,13 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  SeatingTableWaiter.associate = models=>{
+    SeatingTableWaiter.belongsTo(models.Waiter, {foreignKey: 'WaiterId'})
+    SeatingTableWaiter.belongsTo(models.SeatingTable, {foreignKey: 'SeatingTableId'})
+    SeatingTableWaiter.belongsTo(models.FoodList)
+    // SeatingTableWaiter.hasMany(models.Waiter)
+    // SeatingTableWaiter.hasMany(models.SeatingTable)
+  }
   return SeatingTableWaiter;
 };
