@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <%- include partial/head%>
+
+    <%- include partial/header%>
   <h1>Waiter Name: <%=data[0].Waiter.nama%></h1>
-  <body>
+  <body class="type-r0">
     <a href="/customer">Back to Customer</a>
-    <table border = "1">
+    <table class="table table-bordered">
       <tr>
-        <th>SeatingTable</th>
-        <th>Orders</th>
-        <th>Status</th>
-        <th>Queue No</th>
-        <th>Set Status</th>
+        <th class="text-center">SeatingTable</th>
+        <th class="text-center">Orders</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Queue No</th>
+        <th class="text-center">Set Status</th>
       </tr>
       <%data.forEach(z=>{%>
         <%if(z.status ==0){%>

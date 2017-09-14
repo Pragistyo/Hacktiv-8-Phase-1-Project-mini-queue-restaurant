@@ -6,7 +6,7 @@ router.get('/',(req, res)=>{
     models.SeatingTable.findAll({
         order:[['id','ASC']]
     }).then(bla=>{
-      res.render('seatingTable',{data:bla,err_msg:false, title: 'Restaurant Magic'})
+      res.render('seatingTable',{data:bla,err_msg:false, pageTitle: 'Restaurant Magic'})
     })
     .catch(err=>{
       throw err.toString()
@@ -28,7 +28,7 @@ router.get('/',(req, res)=>{
         models.SeatingTable.findAll({
             order:[['id','ASC']]
         }).then(bla=>{
-          res.render('seatingTable',{data:bla,err_msg:err.errors[0].message})
+          res.render('seatingTable',{data:bla,err_msg:err.errors[0].message,pageTitle: 'Restaurant Magic'})
         })
     })
     
@@ -57,7 +57,7 @@ router.get('/edit/:id', (req, res)=> {
         }
     })
     .then(rows =>{
-        res.render('seatingTable-edit', {data:rows[0]})
+        res.render('seatingTable-edit', {data:rows[0],pageTitle: 'Restaurant Magic'})
     }) 
     .catch(err =>{
         res.send(err)

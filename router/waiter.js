@@ -6,7 +6,7 @@ router.get('/',(req, res)=>{
     models.Waiter.findAll({
         order:[['id','ASC']]
     }).then(bla=>{
-      res.render('waiter',{data:bla,err_msg:false, title: 'Restaurant Magic'})
+      res.render('waiter',{data:bla,err_msg:false, pageTitle: 'Restaurant Magic'})
     })
     .catch(err=>{
       throw err.toString()
@@ -52,7 +52,7 @@ router.get('/edit/:id', (req, res)=> {
         }
     })
     .then(rows =>{
-        res.render('seatingTable-edit', {data:rows[0]})
+        res.render('seatingTable-edit', {data:rows[0],pageTitle: 'Restaurant Magic'})
     }) 
     .catch(err =>{
         res.send(err)

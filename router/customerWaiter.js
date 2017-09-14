@@ -11,8 +11,8 @@ router.get('/',(req,res)=>{
     })
     .then(eachWaiter=>{
         // res.send(eachWaiter)
-        console.log(eachWaiter)
-        res.render('customerWaiter',{data:eachWaiter, title: 'Check Your Order'})
+        // console.log(eachWaiter)
+        res.render('customerWaiter',{data:eachWaiter, pageTitle: 'Check Your Order'})
     })
     .catch(err=>{
         // res.send(`waiter doesn't has order(s) yet`)

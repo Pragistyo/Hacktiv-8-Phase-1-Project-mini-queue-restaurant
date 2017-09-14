@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <%- include partial/head%>
-  <body>
+
+    <%- include partial/header%>
+  <body class="type-r0">
     <a href="/admin">Back to Admin</a>
-    <table border = "1">
+    <table class="table table-bordered">
       <tr>
-        <th>Name</th>
-        <th>Occupation</th>
-        <th>Option</th>
+        <th class="text-center"><b>Name</b></th>
+        <th class="text-center">Occupation</th>
+        <th class="text-center">Option</th>
       </tr>
       <%data.forEach(z=>{%>
       <tr>

@@ -5,7 +5,7 @@ const waiter = require('./waiter');
 const seatTable = require('./seatingTable')
 
 router.get('/', (req, res)=>{
-  res.render('indexAdmin', {title: 'Hello Admin'});
+  res.render('indexAdmin', {pageTitle: 'Hello Admin'});
 });
 
 router.use('/waiter', waiter)

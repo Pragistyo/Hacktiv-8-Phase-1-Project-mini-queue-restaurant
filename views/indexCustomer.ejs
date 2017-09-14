@@ -1,7 +1,10 @@
-<!DOCTYPE html>
-<html>
-<%- include partial/head%>
-  <body>
+
+        <%- include partial/header%>
+<h1 class="type-r0">Select Seating Table</h1>
+<%if(err_msg){%>
+  <h3><font color="red">SeatingTable <%=err_msg%> has no order(s) yet</font></h3>
+<%}%>
+  <body class="type-r0">
     <div>
         <% data.forEach(meja =>{%>
             <div><%=meja.tableName %></div>
@@ -12,6 +15,8 @@
         <%})%>
     </div>
     <div>
+      <br>
+      <h1>View Order carried by Waiter</h1>
       <form action="/customer/waiter" method="GET">
         <fieldset >
             <select name="WaiterId" id="">

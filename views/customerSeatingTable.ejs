@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
- <%- include partial/head%>
+
+        <%- include partial/header%>
+
 <h1>You are on table: <%=data[0].SeatingTable.tableName%></h1>
-<body>
+<body class="type-r0">
     <fieldset>
-        <table border = "1">
+        <table class="table table-bordered">
             <thead>
-                <th>Orders</th>
-                <th>Waiter</th>
-                <th>Queue No</th>
-                <th>Status</th>
-                <th>All Queue</th>
+                <tr>
+                <th class="text-center">Orders</th>
+                <th class="text-center">Waiter</th>
+                <th class="text-center">Queue No</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">All Queue</th>
+            </tr>
             </thead>
             <% dataQueue.forEach(d=>{%>
             <tbody>

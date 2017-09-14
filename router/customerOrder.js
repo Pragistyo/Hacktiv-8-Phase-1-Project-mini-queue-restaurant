@@ -10,7 +10,7 @@ router.get('/:id',(req, res)=>{
             .then(pelayan=>{
                 models.SeatingTable.findById(req.params.id)
                 .then(meja=>{
-                    res.render('orders',{err_msg:false,data:food,dataWaiter:pelayan,dataMeja:meja})
+                    res.render('orders',{err_msg:false,data:food,dataWaiter:pelayan,dataMeja:meja, pageTitle: 'Restaurant Magic'})
             })
         })
     })
@@ -30,14 +30,15 @@ router.post('/:id',(req, res)=>{
                 .then(pelayan=>{
                     models.SeatingTable.findById(req.params.id).then(meja=>{
     
-                    res.render('orders',{err_msg:true,data:food,dataWaiter:pelayan,dataMeja:meja})
+                    res.render('orders',{err_msg:true,data:food,dataWaiter:pelayan,dataMeja:meja,pageTitle: 'Restaurant Magic'})
                 })
             })
         })
     }
     let antrian = 0;
-    models.SeatingTableWaiter.findAll()
+    models.SeatingTableWaiter.findAll({order:[['id','ASC']]})
     .then(row=>{
+      
         if(!row[row.length-1]){
             antrian = 1
         } else {
@@ -45,9 +46,15 @@ router.post('/:id',(req, res)=>{
             let tanggalBaru = req.body.Tanggal.slice(8)
             let tglLama     = parseInt(tanggalLama)
             let tglBaru     = parseInt(tanggalBaru)
+            // res.send(row[row.length-1])
 
             if(tglBaru > tglLama){
                 antrian = 1
+                // res.send(row[row.length-1].tanggal)
+                row.forEach(r=>{
+                    r.status = '1'
+                })
+                // res.send(row)
             } else if(tglBaru == tglLama) {
                 antrian = row[row.length-1].noAntrian + 1
             }

@@ -10,7 +10,7 @@ router.get('/', (req, res)=>{
     .then(tables=>{
         models.Waiter.findAll()
         .then(pelayan=>{
-            res.render('indexCustomer', {data: tables, dataWaiter: pelayan,err_msg:false, title: 'Restaurant Magic'});
+            res.render('indexCustomer', {data: tables, dataWaiter: pelayan,err_msg:false, pageTitle: 'Restaurant Magic'});
         })
     })
     .catch(err=>{
@@ -153,24 +153,25 @@ router.get('/vieworder/:id', (req, res)=>{
             .then(antre=>{
                 let countBeneran =0
                 let count = 0;
+                let nathan = false
                 antre.forEach(z=>{
                   let antrian;
                   if(z.status == 0){
                     count++
                     if(req.params.id == z.SeatingTableId){
                         antrian = count
+                        nathan = true
                     }
                   }
                   
                   z.dataValues['YourQueue'] = `${antrian}`;
                   countBeneran++
-                  if(countBeneran === antre.length){
+                  if(countBeneran === antre.length ){
                     z.dataValues['TotalQueue'] = `${count}`;
-                    // console.log('-------------',antre)
-                    // res.send(antre)
-                    if(row.length>0){
+                    // console.log(row.length)
+                    if(row.length>0 && nathan){
                         // res.send(row.length)
-                    res.render('customerSeatingTable', {data:row, dataQueue: antre})
+                    res.render('customerSeatingTable', {data:row, dataQueue: antre, pageTitle: 'Restaurant Magic'})
                     }
                     else{
                         models.SeatingTable.findAll()
@@ -179,7 +180,7 @@ router.get('/vieworder/:id', (req, res)=>{
                             .then(pelayan=>{
                                 models.SeatingTable.findById(req.params.id)
                                 .then(namaMeja=>{
-                                    res.render('indexCustomer', {data: tables, dataWaiter: pelayan,err_msg:namaMeja.tableName});
+                                    res.render('indexCustomer', {data: tables, dataWaiter: pelayan,err_msg:namaMeja.tableName,pageTitle: 'Restaurant Magic'});
                                 })
                             })
                         })
