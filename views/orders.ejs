@@ -10,21 +10,27 @@
   <body>
       <label>Food List: </label><br><br>
     <div>
-        <form action="/customer/orders" method="POST">
+        <form action="/customer/orders/<%=dataMeja.id%>" method="POST">
+            <div required>
             <%data.forEach(makan =>{%>
-            <input type="checkbox" name="food" value="<%=makan.id%>"><%=makan.food%><br><br>
+            <input type="checkbox" name="FoodListId" value="<%=makan.id%>" ><%=makan.food%><br><br>
             <%})%>
+            </div>
             <label>Your Waiter:</label>
             <select name="WaiterId">
                 <%dataWaiter.forEach(z=>{%>
                     <option value="<%=z.id%>"><%=z.nama%></option>
                 <%})%>
             </select><br><br>
-            <input type="date" name="Tanggal"><br>
+            <input type="date" name="Tanggal" required><br>
             <input type="hidden" name="SeatingTableId" value="<%=dataMeja.id%>">
             <input type="hidden" name="Status" value="0">
             <input type="submit" value="Submit">
         </form> 
-    </div>    
+        <%if(err_msg){%>
+            <p>At Least Check one checkbox</p>
+        <%}%>
+        <a href="/customer"><button>Back</button></a>
+    </div>
   </body>
 </html>

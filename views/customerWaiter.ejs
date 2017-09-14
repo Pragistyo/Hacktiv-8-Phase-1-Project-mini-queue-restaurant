@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <h1>Waiter Name: <%=data[0].Waiter.nama%></h1>
+  <body>
+    <a href="/customer">Back to Customer</a>
+    <table border = "1">
+      <tr>
+        <th>SeatingTable</th>
+        <th>Orders</th>
+        <th>Status</th>
+        <th>Queue No</th>
+        <th>Set Status</th>
+      </tr>
+      <%data.forEach(z=>{%>
+        <%if(z.status ==0){%>
+            <%z.status = 'On Progress'%>
+        <%} else{%>
+            <%z.status = 'Done'%>
+            <%}%>
+      <tr>
+        <td><%=z.dataValues.SeatingTable.tableName%></td>
+        <td><%=z.dataValues.FoodList.food%></td>
+        <td><%=z.status%></td>
+        <td><%=z.noAntrian%></td>
+        <td>
+          <a href="/customer/waiter/done/<%=z.id%>">Done</a> ||
+          <a href="/customer/waiter/onProgress/<%=z.id%>">On Progress</a>
+        </td>
+      </tr>
+      <%})%>
+    </table>
+    <form action="">
+    <input type="hidden" nama="WaiterId" values="<%=data[0].Waiter.nama%>">
+</form>
+  </body>
+</html>

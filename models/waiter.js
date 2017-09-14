@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Waiter.association = models=>{
+  Waiter.associate = models=>{
     Waiter.belongsToMany(models.SeatingTable,{through:'SeatingTableWaiter'})
     Waiter.hasMany(models.SeatingTableWaiter)
   }

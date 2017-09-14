@@ -11,5 +11,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  FoodList.associate = models=>{
+    FoodList.hasMany(models.SeatingTableWaiter)
+    // FoodList.belongsTo(models.SeatingTable)
+    FoodList.belongsToMany(models.SeatingTable,{through:'SeatingTableWaiter'})
+    // SeatingTable.belongsToMany(model.SeatingTableWaiter)
+  }
   return FoodList;
 };

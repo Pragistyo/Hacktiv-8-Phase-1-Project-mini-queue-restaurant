@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Look Orders</title>
+</head>
+<h1>You are on table: <%=data[0].SeatingTable.tableName%></h1>
+<body>
+    <fieldset>
+        <table border = "1">
+            <thead>
+                <th>Orders</th>
+                <th>Waiter</th>
+                <th>Queue No</th>
+                <th>Status</th>
+                <th>View Queue</th>
+                <th>All Queue</th>
+            </thead>
+            <% data.forEach(d=>{%>
+            <tbody>
+                <tr>
+                <%if(d.status == 0){%>
+                    <%d.status = 'On Progress'%>
+                    <td><%=d.dataValues.FoodList.dataValues.food%></td>
+                    <td><%=d.dataValues.Waiter.nama%></td>
+                    <td><%=d.noAntrian%></td>
+                    <td><%=d.status%></td>
+                    <td><%=d.dataValues.YourQueue%></td>
+                    <td rowspan="3"><%=d.dataValues.TotalQueue%></td>
+                <%}%>
+                </tr>
+            </tbody>
+            <%})%>
+        </table>
+    </fieldset>
+    <a href="/customer"><button>Back to Customer Option</button></a>
+</body>
+</html>

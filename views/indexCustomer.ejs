@@ -10,9 +10,21 @@
             <div><%=meja.tableName %></div>
             <div>
                 <a href="/customer/orders/<%=meja.id%>"><button>Orders</button></a>
-                <a href="/customer/vieworder"><button>View Orders</button></a>
+                <a href="/customer/vieworder/<%=meja.id%>"><button>View Orders</button></a>
             </div>
         <%})%>
-    </div>    
+    </div>
+    <div>
+      <form action="/customer/waiter" method="GET">
+        <fieldset >
+            <select name="WaiterId" id="">
+              <%dataWaiter.forEach(z=>{%>
+                <option value="<%=z.id%>"><%=z.nama%></option>
+            <%})%>
+          </select>
+         <button type="submit">View Orders</button></a>
+        </fieldset>
+      </form>
+  </div>
   </body>
 </html>
