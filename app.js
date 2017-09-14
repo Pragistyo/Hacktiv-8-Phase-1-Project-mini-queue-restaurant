@@ -16,6 +16,6 @@ app.use('/',index)
 app.use('/admin', indexadmin)
 app.use('/customer', indexcust)
 
-app.listen(3001,()=>{
+app.listen(3000,()=>{
     console.log(`Hello I'm on 3000`);
   })

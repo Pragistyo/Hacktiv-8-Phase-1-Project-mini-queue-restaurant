@@ -55,6 +55,9 @@ router.get('/orders/:id',(req, res)=>{
 
 router.post('/orders/:id',(req, res)=>{
     // console.log('------'+req.body.FoodListId)
+            // Returns an array with values of the selected (checked) checkboxes in "frm"
+    
+
     let trueCheck = false
     if(!req.body.FoodListId){
         trueCheck = true
@@ -86,7 +89,7 @@ router.post('/orders/:id',(req, res)=>{
                 antrian = row[row.length-1].noAntrian + 1
             }
         }
-        // console.log(antrian)
+
         if(!trueCheck){
         models.SeatingTableWaiter.create({
             SeatingTableId:req.body.SeatingTableId,
@@ -114,8 +117,7 @@ router.get('/waiter/done/:id',(req,res)=>{
                     res.redirect(`/customer/waiter?WaiterId=${obj.WaiterId}`)
                     // res.send(obj.WaiterId)
                 })
-    })
-        
+    })        
 })
 
 router.get('/waiter/onProgress/:id',(req,res)=>{
@@ -140,28 +142,48 @@ router.get('/vieworder/:id', (req, res)=>{
         SeatingTableId: req.params.id
     }})
     .then(row=>{
-        let countBeneran =0
-        let count = 0;
-        row.forEach(z=>{
-          let antrian;
-          if(z.status == 0){
-            count++
-            if(req.params.id == z.SeatingTableId){
-                antrian = count
-                // row.dataValues['YourQueue'] = antrian;
-            }
-          }
-          
-          z.dataValues['YourQueue'] = `${antrian}`;
-          countBeneran++
-        //   console.log(antrian)
-          if(countBeneran === row.length){
-            z.dataValues['TotalQueue'] = `${count}`;
-            console.log('-------------',z)
-            // res.send(row)
-            res.render('customerSeatingTable', {data:row})
-          }
-        })
+
+        models.SeatingTableWaiter.findAll({include: [{all : true}],order:[['id','ASC']]})
+            .then(antre=>{
+                let countBeneran =0
+                let count = 0;
+                antre.forEach(z=>{
+                  let antrian;
+                  if(z.status == 0){
+                    count++
+                    if(req.params.id == z.SeatingTableId){
+                        antrian = count
+                    }
+                  }
+                  
+                  z.dataValues['YourQueue'] = `${antrian}`;
+                  countBeneran++
+                  if(countBeneran === antre.length){
+                    z.dataValues['TotalQueue'] = `${count}`;
+                    // console.log('-------------',antre)
+                    // res.send(antre)
+                    if(row.length>0){
+                        // res.send(row.length)
+                    res.render('customerSeatingTable', {data:row, dataQueue: antre})
+                    }
+                    else{
+                        models.SeatingTable.findAll()
+                        .then(tables=>{
+                            models.Waiter.findAll()
+                            .then(pelayan=>{
+                                models.SeatingTable.findById(req.params.id)
+                                .then(namaMeja=>{
+                                    res.render('indexCustomer', {data: tables, dataWaiter: pelayan,err_msg:namaMeja.tableName});
+                                })
+                            })
+                        })
+                    }
+                  }
+                })
+            })
+    })
+    .catch(err=>{
+     res.send('ADA ERROR---->',err)
     })
 })
 

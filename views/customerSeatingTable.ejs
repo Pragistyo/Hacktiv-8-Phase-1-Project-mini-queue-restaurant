@@ -15,20 +15,20 @@
                 <th>Waiter</th>
                 <th>Queue No</th>
                 <th>Status</th>
-                <th>View Queue</th>
                 <th>All Queue</th>
             </thead>
-            <% data.forEach(d=>{%>
+            <% dataQueue.forEach(d=>{%>
             <tbody>
                 <tr>
-                <%if(d.status == 0){%>
-                    <%d.status = 'On Progress'%>
-                    <td><%=d.dataValues.FoodList.dataValues.food%></td>
-                    <td><%=d.dataValues.Waiter.nama%></td>
-                    <td><%=d.noAntrian%></td>
-                    <td><%=d.status%></td>
-                    <td><%=d.dataValues.YourQueue%></td>
-                    <td rowspan="3"><%=d.dataValues.TotalQueue%></td>
+                <%if(d.SeatingTableId == data[0].SeatingTable.id){%>
+                    <%if(d.status == 0){%>
+                        <%d.status = 'On Progress'%>
+                        <td><%=d.dataValues.FoodList.dataValues.food%></td>
+                        <td><%=d.dataValues.Waiter.nama%></td>
+                        <td><%=d.noAntrian%></td>
+                        <td><%=d.status%></td>
+                        <td><button onclick="alert('Your Queue is <%=d.dataValues.YourQueue%> from <%=dataQueue[dataQueue.length-1].dataValues.TotalQueue%>')">Look Queue</button></td>
+                    <%}%>
                 <%}%>
                 </tr>
             </tbody>
