@@ -5,6 +5,7 @@ const models = require('../models');
 router.get('/',(req,res)=>{
     models.SeatingTableWaiter.findAll({
         include:[{all: true}],
+        order:[['id', 'ASC']],
         where:{
             WaiterId : req.query.WaiterId
         }

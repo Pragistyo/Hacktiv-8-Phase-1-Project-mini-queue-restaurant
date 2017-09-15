@@ -6,7 +6,9 @@ const waiter = require('./customerWaiter');
 
 // Melihat daftar meja dan pelayan yang ada
 router.get('/', (req, res)=>{
-    models.SeatingTable.findAll()
+    models.SeatingTable.findAll({
+        order:[['id', 'ASC']]
+    })
     .then(tables=>{
         models.Waiter.findAll()
         .then(pelayan=>{
