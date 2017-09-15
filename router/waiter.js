@@ -22,7 +22,7 @@ router.get('/',(req, res)=>{
                         jabatan:`${req.body.jabatan}`
                       })
     .then(()=>{
-        res.redirect('/admin/seatingTable')
+        res.redirect('/admin/waiter')
     })
     .catch(err=>{
         throw err.toString()
@@ -37,7 +37,7 @@ router.get('/delete/:id', (req, res)=>{
         }
     })
     .then(()=>{
-        res.redirect('/admin/seatingTable')
+        res.redirect('/admin/waiter')
     })
     .catch(err=>{
         res.send(err)
@@ -52,7 +52,7 @@ router.get('/edit/:id', (req, res)=> {
         }
     })
     .then(rows =>{
-        res.render('seatingTable-edit', {data:rows[0],pageTitle: 'Restaurant Magic'})
+        res.render('waiter-edit', {data:rows[0],pageTitle: 'Restaurant Magic'})
     }) 
     .catch(err =>{
         res.send(err)
@@ -69,7 +69,7 @@ router.post('/edit/:id', (req, res)=>{
         }
     })
     .then((r)=>{
-        res.redirect('/admin/seatingTable')
+        res.redirect('/admin/waiter')
     })
     .catch(err=>{
         res.send(err)

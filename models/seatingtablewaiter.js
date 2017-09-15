@@ -24,8 +24,6 @@ module.exports = function(sequelize, DataTypes) {
     SeatingTableWaiter.belongsTo(models.Waiter, {foreignKey: 'WaiterId'})
     SeatingTableWaiter.belongsTo(models.SeatingTable, {foreignKey: 'SeatingTableId'})
     SeatingTableWaiter.belongsTo(models.FoodList)
-    // SeatingTableWaiter.hasMany(models.Waiter)
-    // SeatingTableWaiter.hasMany(models.SeatingTable)
   }
   return SeatingTableWaiter;
 };

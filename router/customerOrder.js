@@ -48,11 +48,24 @@ router.post('/:id',(req, res)=>{
             let tglBaru     = parseInt(tanggalBaru)
             // res.send(row[row.length-1])
 
-            if(tglBaru > tglLama){
+            if(tglBaru !== tglLama){
                 antrian = 1
                 // res.send(row[row.length-1].tanggal)
                 row.forEach(r=>{
                     r.status = '1'
+                    models.SeatingTableWaiter.update({
+                        where: {
+                            id : req.param.id
+                        }
+                    },{
+                        SeatingTableId:req.body.SeatingTableId,
+                        WaiterId: req.body.WaiterId,
+                        tanggal: req.body.Tanggal,
+                        status: r.status,
+                        noAntrian: antrian,
+                        FoodListId:req.body.FoodListId
+                    })
+   
                 })
                 // res.send(row)
             } else if(tglBaru == tglLama) {
