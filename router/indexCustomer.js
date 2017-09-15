@@ -182,7 +182,7 @@ router.get('/vieworder/:id', (req, res)=>{
                             .then(pelayan=>{
                                 models.SeatingTable.findById(req.params.id)
                                 .then(namaMeja=>{
-                                    res.render('indexCustomer', {data: tables, dataWaiter: pelayan,err_msg:namaMeja.tableName,pageTitle: 'Restaurant Magic'});
+                                    res.render('indexCustomer', {data: tables, dataWaiter: pelayan,errs:false,err_msg:namaMeja.tableName,pageTitle: 'Restaurant Magic'});
                                 })
                             })
                         })
