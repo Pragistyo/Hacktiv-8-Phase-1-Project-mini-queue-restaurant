@@ -51,22 +51,20 @@ router.post('/:id',(req, res)=>{
             if(tglBaru !== tglLama){
                 antrian = 1
                 // res.send(row[row.length-1].tanggal)
-                // row.forEach(r=>{
-                //     r.status = '1'
-                //     models.SeatingTableWaiter.update({
-                //         where: {
-                //             id : req.param.id
-                //         }
-                //     },{
-                //         SeatingTableId:req.body.SeatingTableId,
-                //         WaiterId: req.body.WaiterId,
-                //         tanggal: req.body.Tanggal,
-                //         status: r.status,
-                //         noAntrian: antrian,
-                //         FoodListId:req.body.FoodListId
-                //     })
+                row.forEach(r=>{
+                    // r.status = '1'
+                    models.SeatingTableWaiter.update({
+                        
+                        status: '1'
+                       
+                    },
+                    {
+                        where: {
+                            id : r.id
+                        }
+                    })
    
-                // })
+                })
                 // res.send(row)
             } else if(tglBaru == tglLama) {
                 antrian = row[row.length-1].noAntrian + 1
