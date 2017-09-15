@@ -31,6 +31,9 @@
   <%if(err_msg){%>
     <p>SeatingTable <%=err_msg%> has no order(s) yet</p>
   <%}%>
+  <%if(errs){%>
+    <p>This waiter has no order(s) yet</p>
+  <%}%>
   <a href="/"><button>Back to Home</button></a>
   </body>
 </html>

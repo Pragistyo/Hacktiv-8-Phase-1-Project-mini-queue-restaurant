@@ -12,7 +12,7 @@ router.get('/', (req, res)=>{
     .then(tables=>{
         models.Waiter.findAll()
         .then(pelayan=>{
-            res.render('indexCustomer', {data: tables, dataWaiter: pelayan,err_msg:false, pageTitle: 'Restaurant Magic'});
+            res.render('indexCustomer', {data: tables, dataWaiter: pelayan,errs:false,err_msg:false, pageTitle: 'Restaurant Magic'});
         })
     })
     .catch(err=>{

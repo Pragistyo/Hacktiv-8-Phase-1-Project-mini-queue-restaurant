@@ -11,13 +11,22 @@ router.get('/',(req,res)=>{
         }
     })
     .then(eachWaiter=>{
-        // res.send(eachWaiter)
-        // console.log(eachWaiter)
-        res.render('customerWaiter',{data:eachWaiter, pageTitle: 'Check Your Order'})
+        if(eachWaiter.length>0){
+        res.render('customerWaiter',{data:eachWaiter, pageTitle: 'Check Your Order',errs:false})
+        }else{
+            models.SeatingTable.findAll({
+                order:[['id', 'ASC']]
+            })
+            .then(tables=>{
+                models.Waiter.findAll()
+                .then(pelayan=>{
+                    res.render('indexCustomer', {data: tables, dataWaiter: pelayan,errs:true,err_msg:false, pageTitle: 'Restaurant Magic'});
+                })
+            })
+        }
     })
     .catch(err=>{
-        // res.send(`waiter doesn't has order(s) yet`)
-        res.send(err)
+       throw err.toString()
     })
 })
 
